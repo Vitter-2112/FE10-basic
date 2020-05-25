@@ -1,4 +1,4 @@
-function showUsersTable(persons = []) {
+function showUsersTable(persons = [10]) {
     const sortedPersons = persons.sort(function (a, b) {
         return a.age - b.age;
     });
@@ -8,7 +8,7 @@ function showUsersTable(persons = []) {
     let maxAge = persons[0].age;
     let innerHtmlTableBody = '';
     for (let i = 0; i < persons.length; i++) {
-        innerHtmlTableBody += '<tr><td>' + sortedPersons[i].name + '</td><td>' + sortedPersons[i].age + '</td></tr>';
+        innerHtmlTableBody += '<tr><td>' + sortedPersons[i].name + '</td><td>' + sortedPersons[i].age + '</td><td>'+ sortedPersons[i].city +'</td>';
         averageAge += + sortedPersons[i].age;
         if (persons[i].age > maxAge)
             maxAge = persons[i].age;
@@ -30,7 +30,7 @@ form$.addEventListener('submit', function(event) {
     let person = {};
     person.name = document.querySelector('input[name=name]').value;
     person.age = document.querySelector('input[name=age]').value;
-
+    person.city = document.querySelector('input[name=city]').value;
     persons.push(person);
 
     showUsersTable(persons);
